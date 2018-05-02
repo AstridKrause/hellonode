@@ -34,7 +34,7 @@ node {
         }
     }
     stage ('Run Application') { 
-       sh "MYIP=`docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'`" app
+       
        sh "docker run -e APP_ENV=DEV " app
    } 
 }
