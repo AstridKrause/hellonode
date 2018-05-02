@@ -35,7 +35,7 @@ node {
     }
     stage ('Run Application') { 
        // Run application using Docker image 
-       sh "MYIP=`docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'`" 
-       sh "docker run -e DOCKER_MYIP=$MYIP -e APP_ENV=DEV getintodevops/hellonode:${env.BUILD_NUMBER}" 
+       sh "MYIP=`docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'`" app
+       sh "docker run -e DOCKER_MYIP=$MYIP -e APP_ENV=DEV " app
    } 
 }
