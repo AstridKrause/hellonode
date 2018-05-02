@@ -35,6 +35,6 @@ node {
     }
     stage ('Run Application') { 
        
-       sh "docker run -e APP_ENV=DEV app"
+       sh "docker run -e APP_ENV=DEV ${env.BUILD_NUMBER}"
    } 
 }
