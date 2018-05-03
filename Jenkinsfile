@@ -36,7 +36,7 @@ node {
     }
 
     stage('Run Dev Environment') {
-       /* docker.withServer('tcp://azvfdoc01.westeurope.cloudapp.azure.com', 'azvf-machines-credentials') */
-       app.withRun('-e "MYENV_VAR=Assi-Demo"') 
-   }
+       sh "MYDOCKERIP=`docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' xy`" 
+       sh "docker run -e MY_DOCKER_VAR=$MYDOCKERIP astridkrause/getintodevops:${env.BUILD_NUMBER}"    
+    }
 }
