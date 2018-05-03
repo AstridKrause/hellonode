@@ -11,7 +11,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("astridkrause/getintodevops", "-e MYENV='Development'" )
+        app = docker.build("astridkrause/getintodevops" )
     }
 
     stage('Test image') {
@@ -32,6 +32,12 @@ node {
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
+        }
+    }
+
+    stage('Run Dev Environment') {
+        docker.withServer('tcp://azvfdoc01.westeurope.cloudapp.azure.com', 'azvf-machines-credentials') {
+        app.withRun("-e MYENV=ASSIDEMO")
         }
     }
 }
