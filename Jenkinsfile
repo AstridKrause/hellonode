@@ -37,6 +37,6 @@ node {
 
     stage('Run Dev Environment') {
        /* docker.withServer('tcp://azvfdoc01.westeurope.cloudapp.azure.com', 'azvf-machines-credentials') */
-       app.withRun('-e "MYENV_VAR=Assi-Demo") 
+       app.withRun('-e "MYENV_VAR=Assi-Demo"') 
    }
 }
