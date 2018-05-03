@@ -4,7 +4,7 @@ var http = require('http');
 // configure our HTTP server
 var server = http.createServer(function (request, response) {
   response.writeHead(200, {"Content-Type": "text/plain"});
-  response.end("UNDERDOCKS DEVOPS EXAMPLE Application\nWELCOME");
+  response.end("UNDERDOCKS DEVOPS EXAMPLE Application\nWELCOME "+process.env.MYENV);
 });
 
 // listen on localhost:8000

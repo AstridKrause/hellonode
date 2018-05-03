@@ -11,7 +11,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("astridkrause/getintodevops")
+        app = docker.build("astridkrause/getintodevops", "-e ${MYENV}='Development'" )
     }
 
     stage('Test image') {
@@ -20,6 +20,7 @@ node {
 
         app.inside {
             sh 'echo "Tests passed"'
+            sh 'echo "MYENV=${MYENV}"'
         }
     }
 
@@ -33,8 +34,4 @@ node {
             app.push("latest")
         }
     }
-    stage ('Run Application') { 
-       
-       sh "docker run -e APP_ENV=DEV ${env.BUILD_NUMBER}"
-   } 
 }
