@@ -36,7 +36,6 @@ node {
     }
 
     stage('Run Dev Environment') {
-       sh "MYDOCKERIP=docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'" 
-       sh "docker run -e MY_DOCKER_VAR=$MYDOCKERIP astridkrause/getintodevops:${env.BUILD_NUMBER}"    
+        sh "docker run astridkrause/getintodevops:${env.BUILD_NUMBER}"    
     }
 }
