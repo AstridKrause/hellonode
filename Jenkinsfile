@@ -20,7 +20,7 @@ node {
 
         app.inside {
             sh 'echo "Tests passed"'
-            #sh 'echo "MYENV=${MYENV}"'
+            /*sh 'echo "MYENV=${MYENV}"' */
         }
     }
 
