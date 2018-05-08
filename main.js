@@ -1,10 +1,13 @@
 // load the http module
 var http = require('http');
+var fs = require('fs');
 
 // xconfigure our HTTP server
 var server = http.createServer(function (request, response) {
-  response.writeHead(200, {"Content-Type": "text/plain"});
-  response.end("UNDERDOCKS DEVOPS EXAMPLE Application\nWELCOME "+process.env.APP_ENV);
+  fs.readFile('demofile2.html', function(err, data) {
+      response.writeHead(200, {'Content-Type': 'text/html'});
+      response.write(data);
+      response.end();
 });
 
 // listen on localhost:8000
