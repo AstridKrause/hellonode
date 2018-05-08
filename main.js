@@ -1,14 +1,26 @@
+// load the http module
 var http = require('http');
-var fs = require('fs');
-http.createServer(function (req, res) {
-  //Open a file on the server and return it's content:
-  fs.readFile('demofile2.html', function(err, data) {
-    if (err) {
-      res.writeHead(404, {'Content-Type': 'text/html'});
-       return res.end("404 Not Found");
-    }  
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write(data);
-    return res.end();
-  });
-}).listen(8080);
+
+// configure our HTTP server
+var server = http.createServer(function (request, response) {
+  response.writeHead(200, {"Content-Type": "text/html"});
+  response.end("UNDERDOCKS DEVOPS EXAMPLE Application\nWELCOME "+process.env.APP_ENV);
+});
+
+// listen on localhost:8000
+server.listen(8000);
+console.log("Server listening at http://127.0.0.1:8000/");
+
+// load the http module
+var http = require('http');
+
+// configure our HTTP server
+var server = http.createServer(function (request, response) {
+  response.writeHead(200, {"Content-Type": "text/plain"});
+  response.end("UNDERDOCKS DEVOPS EXAMPLE Application\nWELCOME \n"+process.env.APP_ENV);
+});
+
+// listen on localhost:8000
+server.listen(8000);
+console.log("Server listening at http://127.0.0.1:8000/");
+
