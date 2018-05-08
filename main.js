@@ -1,7 +1,7 @@
 // load the http module
 var http = require('http');
 
-// configure our HTTP server
+// xconfigure our HTTP server
 var server = http.createServer(function (request, response) {
   response.writeHead(200, {"Content-Type": "text/plain"});
   response.end("UNDERDOCKS DEVOPS EXAMPLE Application\nWELCOME "+process.env.APP_ENV);
