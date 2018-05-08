@@ -5,6 +5,10 @@ var fs = require('fs');
 // xconfigure our HTTP server
 var server = http.createServer(function (request, response) {
   fs.readFile('demofile2.html', function(err, data) {
+      if (err) {
+         return console.log(err);
+      }
+
       response.writeHead(200, {'Content-Type': 'text/html'});
       response.write(data);
       response.end();
